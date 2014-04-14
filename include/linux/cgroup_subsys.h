@@ -55,7 +55,10 @@ SUBSYS(perf)
 SUBSYS(net_prio)
 #endif
 
-/* */
 #ifdef CONFIG_CGROUP_BFQIO
 SUBSYS(bfqio)
+#endif
+
+#ifdef CONFIG_CGROUP_TIMER_SLACK
+SUBSYS(timer_slack)
 #endif
