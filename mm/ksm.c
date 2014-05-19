@@ -129,9 +129,9 @@ static unsigned long ksm_pages_unshared;
 
 static unsigned long ksm_rmap_items;
 
-static unsigned int ksm_thread_pages_to_scan = 100;
+static unsigned int ksm_thread_pages_to_scan = 256;
 
-static unsigned int ksm_thread_sleep_millisecs = 20;
+static unsigned int ksm_thread_sleep_millisecs = 1500;
 
 #ifdef CONFIG_KSM_HTC_POLICY
 static unsigned int ksm_enable_smart_scan = 1;
