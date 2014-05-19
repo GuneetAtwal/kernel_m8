@@ -98,10 +98,10 @@ extern void get_avenrun(unsigned long *loads, unsigned long offset, int shift);
 
 #define FSHIFT		11		
 #define FIXED_1		(1<<FSHIFT)	
-#define LOAD_FREQ	(4*HZ+1)	
 #define EXP_1		1884		
 #define EXP_5		2014		
 #define EXP_15		2037		
+#define LOAD_FREQ	(4*HZ+61)	/* 4.61 sec intervals */
 
 #define CALC_LOAD(load,exp,n) \
 	load *= exp; \
@@ -2310,6 +2310,8 @@ static inline unsigned long rlimit_max(unsigned int limit)
 	return task_rlimit_max(current, limit);
 }
 
+#endif 
+
 #ifdef CONFIG_CGROUP_TIMER_SLACK
 extern unsigned long task_get_effective_timer_slack(struct task_struct *tsk);
 #else
@@ -2320,6 +2322,4 @@ static inline unsigned long task_get_effective_timer_slack(
  }
 #endif
 
-#endif 
-
-
+#endif /* __KERNEL__ */
