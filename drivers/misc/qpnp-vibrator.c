@@ -141,14 +141,14 @@ static int qpnp_vib_set(struct qpnp_vib *vib, int on)
 		val = vib->reg_vtg_ctl;
 		val &= ~QPNP_VIB_VTG_SET_MASK;
 		val |= (vib->vtg_level & QPNP_VIB_VTG_SET_MASK);
-		printk(KERN_INFO "[VIB] on, reg0=0x%x.\n", val);
+		//printk(KERN_INFO "[VIB] on, reg0=0x%x.\n", val);
 		rc = qpnp_vib_write_u8(vib, &val, QPNP_VIB_VTG_CTL(vib->base));
 		if (rc < 0)
 			return rc;
 		vib->reg_vtg_ctl = val;
 		val = vib->reg_en_ctl;
 		val |= QPNP_VIB_EN;
-		printk(KERN_INFO "[VIB] on, reg1=0x%x.\n", val);
+		//printk(KERN_INFO "[VIB] on, reg1=0x%x.\n", val);
 		rc = qpnp_vib_write_u8(vib, &val, QPNP_VIB_EN_CTL(vib->base));
 		if (rc < 0)
 			return rc;
@@ -156,7 +156,7 @@ static int qpnp_vib_set(struct qpnp_vib *vib, int on)
 	} else {
 		val = vib->reg_en_ctl;
 		val &= ~QPNP_VIB_EN;
-		printk(KERN_INFO "[VIB] off, reg1=0x%x.\n", val);
+		//printk(KERN_INFO "[VIB] off, reg1=0x%x.\n", val);
 		rc = qpnp_vib_write_u8(vib, &val, QPNP_VIB_EN_CTL(vib->base));
 		if (rc < 0)
 			return rc;
@@ -180,7 +180,7 @@ retry:
 		goto retry;
 	}
 
-	printk(KERN_INFO "[VIB] enable=%d.\n", value);
+	//printk(KERN_INFO "[VIB] enable=%d.\n", value);
 
 	if (value == 0)
 		vib->state = 0;
@@ -206,8 +206,8 @@ static void qpnp_vib_trigger_enable(struct vib_trigger_enabler *enabler, int val
 	vib = enabler->trigger_data;
 	dev = &vib->timed_dev;
 
-	printk(KERN_INFO "[VIB]"
-			"vib_trigger=%d.\r\n", value);
+	//printk(KERN_INFO "[VIB]"
+	//		"vib_trigger=%d.\r\n", value);
 
 	qpnp_vib_enable(dev, value);
 }
