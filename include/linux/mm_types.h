@@ -270,6 +270,9 @@ struct mm_struct {
 #ifdef CONFIG_CPUMASK_OFFSTACK
 	struct cpumask cpumask_allocation;
 #endif
+#ifdef CONFIG_UKSM
+	struct vma_slot *uksm_vma_slot;
+#endif
 };
 
 static inline void mm_init_cpumask(struct mm_struct *mm)
