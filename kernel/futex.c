@@ -1571,8 +1571,6 @@ retry:
 	if (unlikely(uval == vpid))
 		goto out_unlock;
 
-	head = &hb->chain;
-
 	/*
 	 * Ok, other tasks may need to be woken up - check waiters
 	 * and do the wakeup if necessary:
