@@ -1518,6 +1518,29 @@ done:
 	return 0;
 }
 
+/**
+ * int jbd2_journal_force_commit() - force any uncommitted transactions
+ * @journal: journal to force
+ *
+ * For synchronous operations: force any uncommitted transactions
+ * to disk.  May seem kludgy, but it reuses all the handle batching
+ * code in a very simple manner.
+ */
+int jbd2_journal_force_commit(journal_t *journal)
+{
+	handle_t *handle;
+	int ret;
+
+	handle = jbd2_journal_start(journal, 1);
+	if (IS_ERR(handle)) {
+		ret = PTR_ERR(handle);
+	} else {
+		handle->h_sync = 1;
+		ret = jbd2_journal_stop(handle);
+	}
+	return ret;
+}
+
 /*
  * File truncate and transaction commit interact with each other in a
  * non-trivial way.  If a transaction writing data block A is
