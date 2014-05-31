@@ -1,0 +1,11 @@
+--- drivers/input/touchscreen/synaptics_3k.c
++++ drivers/input/touchscreen/synaptics_3k.c
+@@ -555,7 +555,7 @@
+ 			gpio_direction_output(ts->gpio_reset, 0);
+ 			msleep(1);
+ 			gpio_direction_output(ts->gpio_reset, 1);
+-			pr_info("[TP] %s: synaptics touch chip reseted.\n", __func__);
++			//pr_info("[TP] %s: synaptics touch chip reseted.\n", __func__);
+ 		}
+ 
+ 		if (!ts->use_irq) {
